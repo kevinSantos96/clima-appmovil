@@ -1,68 +1,68 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image} from 'react-native'
+import { StyleSheet, View, Text, Image } from 'react-native'
 
 
 
-export const Clima = ({guardarResultado}) => {
+export const Clima = ({ guardarResultado }) => {
 
-    const {name, main} = guardarResultado
+    const { name, main } = guardarResultado
 
-    if(!name) return null;
+    if (!name) return null;
 
     const kelvin = 273.15
 
     return (
         <View style={styles.clima}>
             <Text style={[styles.texto, styles.actual]}>
-                {parseInt(main.temp-kelvin)}
+                {parseInt(main.temp - kelvin)}
                 <Text style={styles.temperatura}>
                     &#x2103; {' '}
                 </Text>
-                <Image 
-                    style={{width: 66, height: 58}}
-                    source={{uri:`http://openweathermap.org/img/w/${guardarResultado.weather[0].icon}.png`}}
+                <Image
+                    style={{ width: 66, height: 58 }}
+                    source={{ uri: `http://openweathermap.org/img/w/${guardarResultado.weather[0].icon}.png` }}
                 />
             </Text>
             <View style={styles.temperaturas}>
                 <Text style={styles.texto}>Min{' '}
                     <Text style={styles.temperatura}>
-                        {parseInt(main.temp_min-kelvin)} &#x2103;
+                        {parseInt(main.temp_min - kelvin)} &#x2103;
                     </Text>
-                </Text> 
+                </Text>
 
                 <Text style={styles.texto}>Max{' '}
                     <Text style={styles.temperatura}>
-                        {parseInt(main.temp_max-kelvin)} &#x2103;
+                        {parseInt(main.temp_max - kelvin)} &#x2103;
                     </Text>
-                </Text> 
+                </Text>
             </View>
-            
+
         </View>
-        
+
     )
 }
 
 const styles = StyleSheet.create({
-    clima:{
+    clima: {
         marginBottom: 20
     },
-    texto:{
-        color: '#FFF',
+    texto: {
+        color: '#f5f5f5',
         fontSize: 22,
         textAlign: 'center',
         marginRight: 20
 
     },
-    actual:{
+    actual: {
         fontSize: 80,
         marginRight: 0,
         fontWeight: 'bold'
     },
-    temperatura:{
+    temperatura: {
         fontSize: 28,
         fontWeight: 'bold'
     },
-    temperaturas:{
+    temperaturas: {
         flexDirection: 'row',
         justifyContent: 'center'
     }
